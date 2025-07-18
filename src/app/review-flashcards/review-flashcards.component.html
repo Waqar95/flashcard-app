@@ -1,29 +1,36 @@
-<h2>Review Flashcards</h2>
+<h2>My Flashcards</h2>
 
-<div *ngIf="flashcards.length === 0">
+<!-- Empty state with optional image -->
+<div *ngIf="flashcards.length === 0" class="no-flashcards">
+  <img src="assets/images/no-flashcards.svg" alt="No flashcards" />
   <p>No flashcards found. Try adding some!</p>
 </div>
 
+<!-- Flip card grid -->
 <div class="card-grid" *ngIf="flashcards.length > 0">
   <div *ngFor="let flashcard of flashcards" class="card-wrapper">
+    <!-- Flip card -->
     <div
       class="flip-card"
       (click)="toggleFlip(flashcard.id)"
       [class.flipped]="isFlipped(flashcard.id)"
     >
       <div class="flip-card-inner">
+        <!-- Front of card (Question) -->
         <div class="flip-card-front">
           <strong>Q:</strong> {{ flashcard.question }}
           <br />
           <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em>
         </div>
+
+        <!-- Back of card (Answer) -->
         <div class="flip-card-back">
           <strong>A:</strong> {{ flashcard.answer }}
         </div>
       </div>
     </div>
 
-    <!-- Buttons below each card -->
+    <!-- Action buttons -->
     <div class="card-actions">
       <button (click)="deleteFlashcard(flashcard.id)">Delete</button>
       <a [routerLink]="['/edit', flashcard.id]">
