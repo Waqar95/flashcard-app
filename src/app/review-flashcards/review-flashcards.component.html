@@ -1,14 +1,13 @@
-<h2>Review Flashcards</h2>
-
-<div *ngIf="flashcards.length === 0">
-  <p>No flashcards found. Try adding some!</p>
-</div>
-
 <ul *ngIf="flashcards.length > 0">
   <li *ngFor="let flashcard of flashcards">
     <strong>Q:</strong> {{ flashcard.question }}<br />
     <strong>A:</strong> {{ flashcard.answer }}<br />
     <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em
     ><br />
+    <button (click)="deleteFlashcard(flashcard.id)">Delete</button>
+    <a [routerLink]="['/edit', flashcard.id]">
+      <button>Edit</button>
+    </a>
+    <hr />
   </li>
 </ul>

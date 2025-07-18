@@ -1,1 +1,19 @@
-<h2>Edit FlashCard</h2>
+<h2>Edit Flashcard</h2>
+
+<form [formGroup]="flashcardForm" (ngSubmit)="onSubmit()">
+  <label for="question">Question:</label>
+  <input id="question" formControlName="question" required />
+  <br /><br />
+
+  <label for="answer">Answer:</label>
+  <input id="answer" formControlName="answer" required />
+  <br /><br />
+
+  <label for="topic">Topic (optional):</label>
+  <input id="topic" formControlName="topic" />
+  <br /><br />
+
+  <button type="submit" [disabled]="flashcardForm.invalid">
+    Update Flashcard
+  </button>
+</form>
