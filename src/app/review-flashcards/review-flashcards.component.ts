@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FlashcardService } from '../services/flashcard.service';
 import { Flashcard } from '../models/flashcard.model';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-review-flashcards',
@@ -15,6 +16,20 @@ export class ReviewFlashcardsComponent implements OnInit {
   flashcards: Flashcard[] = [];
 
   constructor(private flashcardService: FlashcardService) {}
+
+  flippedCards: Set<number> = new Set();
+
+  toggleFlip(id: number): void {
+    if (this.flippedCards.has(id)) {
+      this.flippedCards.delete(id);
+    } else {
+      this.flippedCards.add(id);
+    }
+  }
+
+  isFlipped(id: number): boolean {
+    return this.flippedCards.has(id);
+  }
 
   ngOnInit(): void {
     // Get all flashcards when the component loads

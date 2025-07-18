@@ -4,16 +4,22 @@
   <p>No flashcards found. Try adding some!</p>
 </div>
 
-<ul *ngIf="flashcards.length > 0">
-  <li *ngFor="let flashcard of flashcards">
-    <strong>Q:</strong> {{ flashcard.question }}<br />
-    <strong>A:</strong> {{ flashcard.answer }}<br />
-    <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em
-    ><br />
-    <button (click)="deleteFlashcard(flashcard.id)">Delete</button>
-    <a [routerLink]="['/edit', flashcard.id]">
-      <button>Edit</button>
-    </a>
-    <hr />
-  </li>
-</ul>
+<div class="card-grid" *ngIf="flashcards.length > 0">
+  <div
+    class="flip-card"
+    *ngFor="let flashcard of flashcards"
+    (click)="toggleFlip(flashcard.id)"
+    [class.flipped]="isFlipped(flashcard.id)"
+  >
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <strong>Q:</strong> {{ flashcard.question }}
+        <br />
+        <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em>
+      </div>
+      <div class="flip-card-back">
+        <strong>A:</strong> {{ flashcard.answer }}
+      </div>
+    </div>
+  </div>
+</div>
