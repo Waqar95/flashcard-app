@@ -1,4 +1,8 @@
 <nav>
   <a routerLink="/review" routerLinkActive="active">Review</a>
   <a routerLink="/create" routerLinkActive="active">Create</a>
+  <label class="dark-toggle">
+    <input type="checkbox" (change)="toggleDarkMode($event)" />
+    🌙
+  </label>
 </nav>

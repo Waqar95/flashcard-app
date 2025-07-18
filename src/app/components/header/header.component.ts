@@ -9,4 +9,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  toggleDarkMode(event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    document.body.classList.toggle('dark-mode', checked);
+  }
+}
