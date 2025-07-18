@@ -21,6 +21,7 @@ export class FlashcardService {
   add(flashcard: Omit<Flashcard, 'id'>): void {
     const newFlashcard: Flashcard = { id: this.nextId++, ...flashcard };
     this.flashcards.push(newFlashcard);
+    console.log('Flashcard added', newFlashcard);
   }
 
   update(id: number, updated: Omit<Flashcard, 'id'>): void {
