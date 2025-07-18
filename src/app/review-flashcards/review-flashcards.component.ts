@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FlashcardService } from '../services/flashcard.service';
 import { Flashcard } from '../models/flashcard.model';
 
 @Component({
   selector: 'app-review-flashcards',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './review-flashcards.component.html',
   styleUrls: ['./review-flashcards.component.css'],
 })
