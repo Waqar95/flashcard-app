@@ -41,17 +41,19 @@ export class FlashcardService {
   add(flashcard: Omit<Flashcard, 'id'>): void {
     const newFlashcard: Flashcard = { id: this.nextId++, ...flashcard };
     this.flashcards.push(newFlashcard);
-    console.log('Flashcard added', newFlashcard);
+    this.saveToStorage(); // ✅ Save after add
   }
 
   update(id: number, updated: Omit<Flashcard, 'id'>): void {
     const index = this.flashcards.findIndex((fc) => fc.id === id);
     if (index !== -1) {
       this.flashcards[index] = { id, ...updated };
+      this.saveToStorage(); // ✅ Save after update
     }
   }
 
   delete(id: number): void {
     this.flashcards = this.flashcards.filter((fc) => fc.id !== id);
+    this.saveToStorage(); // ✅ Save after delete
   }
 }
