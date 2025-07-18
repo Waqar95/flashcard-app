@@ -1,1 +1,22 @@
 <h2>Create FlashCard</h2>
+
+<form [formGroup]="flashcardForm" (ngSubmit)="onSubmit()">
+  <label for="question">Question:</label>
+  <input id="question" formControlName="question" required />
+  <br />
+  <br />
+
+  <label for="answer">Answer:</label>
+  <input id="answer" formControlName="answer" required />
+  <br />
+  <br />
+
+  <label for="topic">Topic (Opional):</label>
+  <input id="topic" formControlName="topic" required />
+  <br />
+  <br />
+
+  <button type="submit" [disabled]="flashcardForm.invalid">
+    Add FlashCard
+  </button>
+</form>
