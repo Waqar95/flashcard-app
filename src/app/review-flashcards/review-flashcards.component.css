@@ -1,0 +1,36 @@
+ul {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  background-color: #f3f3f3;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  margin-right: 10px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:first-of-type {
+  background-color: #e53935; /* Delete */
+  color: white;
+}
+
+button:last-of-type {
+  background-color: #43a047; /* Edit */
+  color: white;
+}
