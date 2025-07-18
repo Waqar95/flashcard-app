@@ -13,7 +13,7 @@ import { ReviewFlashcardsComponent } from './review-flashcards/review-flashcards
 const routes: Routes = [
   { path: '', redirectTo: 'review', pathMatch: 'full' }, // Default route redirects to /review
   { path: 'create', component: CreateFlashcardComponent }, // Renders CreateFlashCardComponent on /create
-  { path: 'edit/id', component: EditFlashcardComponent }, // Renders EditFlash±CardComponent with ID param
+  { path: 'edit/:id', component: EditFlashcardComponent }, // Renders EditFlash±CardComponent with ID param
   { path: 'review', component: ReviewFlashcardsComponent }, // Renders Review±FlashCardComponent on / review
 ];
 
