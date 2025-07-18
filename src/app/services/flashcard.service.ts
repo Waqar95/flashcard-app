@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Flashcard } from '../models/flashcard.model';
 
+const STORAGE_KEY = 'flashcards';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -8,7 +10,25 @@ export class FlashcardService {
   private flashcards: Flashcard[] = [];
   private nextId = 1;
 
-  constructor() {}
+  constructor() {
+    this.loadFromStorage();
+  }
+
+  private saveToStorage(): void {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.flashcards));
+  }
+
+  private loadFromStorage(): void {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      this.flashcards = JSON.parse(stored);
+      const maxId = this.flashcards.reduce(
+        (max, fc) => Math.max(max, fc.id),
+        0
+      );
+      this.nextId = maxId + 1;
+    }
+  }
 
   getAll(): Flashcard[] {
     return this.flashcards;
