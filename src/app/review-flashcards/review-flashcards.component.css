@@ -15,35 +15,36 @@
   z-index: 1;
 }
 
-/* === Flip Card Outer Box === */
+/* === Flip Card Outer === */
 .flip-card {
   width: 100%;
   max-width: 360px;
-  height: 240px;
+  min-height: 260px;
   perspective: 1000px;
   position: relative;
-  overflow: visible; /* ✅ allow buttons outside */
+  overflow: visible;
 }
 
-/* === Flip Card Inner Logic === */
+/* === Flip Card Inner === */
 .flip-card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.6s ease;
   transform-style: preserve-3d;
-  position: relative;
-  z-index: 0;
+  transition: transform 0.6s ease;
   border-radius: 16px;
   background: var(--card-bg);
   color: var(--text-color);
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 0;
 }
 
 .flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
+/* === Front and Back Sides === */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -55,13 +56,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
 }
 
-/* === Buttons BELOW the flip card === */
+/* === Button Section === */
 .card-actions {
   margin-top: 14px;
   display: flex;
@@ -91,6 +97,14 @@
 
 .card-actions button:hover {
   opacity: 0.9;
+}
+
+/* === Text Wrapping === */
+.card-text {
+  margin: 10px 0;
+  max-width: 90%;
+  word-break: break-word;
+  line-height: 1.4;
 }
 
 /* === Empty State === */
