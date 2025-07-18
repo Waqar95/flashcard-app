@@ -1,25 +1,34 @@
 <h2>Review Flashcards</h2>
 
-<div *ngIf="flashcards.length === 0" class="no-flashcards">
+<div *ngIf="flashcards.length === 0">
   <p>No flashcards found. Try adding some!</p>
 </div>
 
 <div class="card-grid" *ngIf="flashcards.length > 0">
-  <div
-    class="flip-card"
-    *ngFor="let flashcard of flashcards"
-    (click)="toggleFlip(flashcard.id)"
-    [class.flipped]="isFlipped(flashcard.id)"
-  >
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <strong>Q:</strong> {{ flashcard.question }}
-        <br />
-        <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em>
+  <div *ngFor="let flashcard of flashcards" class="card-wrapper">
+    <div
+      class="flip-card"
+      (click)="toggleFlip(flashcard.id)"
+      [class.flipped]="isFlipped(flashcard.id)"
+    >
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <strong>Q:</strong> {{ flashcard.question }}
+          <br />
+          <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em>
+        </div>
+        <div class="flip-card-back">
+          <strong>A:</strong> {{ flashcard.answer }}
+        </div>
       </div>
-      <div class="flip-card-back">
-        <strong>A:</strong> {{ flashcard.answer }}
-      </div>
+    </div>
+
+    <!-- Buttons below each card -->
+    <div class="card-actions">
+      <button (click)="deleteFlashcard(flashcard.id)">Delete</button>
+      <a [routerLink]="['/edit', flashcard.id]">
+        <button>Edit</button>
+      </a>
     </div>
   </div>
 </div>
