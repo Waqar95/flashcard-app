@@ -24,5 +24,6 @@ A simple, responsive, and fully functional Flashcard Application built with Angu
 
 # Author
 
-Developed By Waqar Ahmed \n
+Developed By Waqar Ahmed
+
 Websit: https://codingwithwaqar.com
