@@ -1,14 +1,13 @@
 <h2>My Flashcards</h2>
 
-<!-- Empty state -->
 <div *ngIf="flashcards.length === 0" class="no-flashcards">
+  <img src="assets/images/no-flashcards.svg" alt="No flashcards" />
   <p>No flashcards found. Try adding some!</p>
 </div>
 
-<!-- Flashcard grid -->
 <div class="card-grid" *ngIf="flashcards.length > 0">
   <div *ngFor="let flashcard of flashcards" class="card-wrapper">
-    <!-- Flip card -->
+    <!-- Flip Card -->
     <div
       class="flip-card"
       (click)="toggleFlip(flashcard.id)"
@@ -17,17 +16,22 @@
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <strong>Q:</strong>
-          <p class="card-text">{{ flashcard.question }}</p>
-          <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em>
+          <div class="card-content">
+            <p>{{ flashcard.question }}</p>
+            <em *ngIf="flashcard.topic">Topic: {{ flashcard.topic }}</em>
+          </div>
         </div>
+
         <div class="flip-card-back">
           <strong>A:</strong>
-          <p class="card-text">{{ flashcard.answer }}</p>
+          <div class="card-content">
+            <p>{{ flashcard.answer }}</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Action buttons -->
+    <!-- Buttons Below Card -->
     <div class="card-actions">
       <button (click)="deleteFlashcard(flashcard.id)">Delete</button>
       <a [routerLink]="['/edit', flashcard.id]">

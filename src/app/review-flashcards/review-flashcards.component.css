@@ -1,79 +1,81 @@
-/* === Grid Layout === */
+/* Grid Layout */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
   padding: 40px;
   justify-items: center;
 }
 
-/* === Each Card + Buttons === */
+/* Each Card + Buttons */
 .card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1;
 }
 
-/* === Flip Card Outer === */
+/* Flip Card Container */
 .flip-card {
   width: 100%;
-  max-width: 360px;
-  min-height: 260px;
+  max-width: auto;
+  height: 260px;
   perspective: 1000px;
-  position: relative;
-  overflow: visible;
 }
 
-/* === Flip Card Inner === */
 .flip-card-inner {
-  width: 100%;
+  width: 300px;
   height: 100%;
-  transform-style: preserve-3d;
+  position: relative;
   transition: transform 0.6s ease;
+  transform-style: preserve-3d;
   border-radius: 16px;
   background: var(--card-bg);
   color: var(--text-color);
   border: 1px solid var(--border-color);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: relative;
-  z-index: 0;
 }
 
 .flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* === Front and Back Sides === */
+/* Front/Back of the Card */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 24px;
+  padding: 20px;
   backface-visibility: hidden;
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  text-align: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
 }
 
-/* === Button Section === */
+/* Scrollable content inside card */
+.card-content {
+  margin-top: 10px;
+  max-height: 180px;
+  overflow-y: auto;
+  width: 100%;
+  text-align: center;
+  padding: 0 8px;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+/* Buttons Below */
 .card-actions {
-  margin-top: 14px;
+  margin-top: 12px;
   display: flex;
   gap: 12px;
-  z-index: 2;
-  position: relative;
 }
 
 .card-actions button {
@@ -88,26 +90,18 @@
 }
 
 .card-actions button:first-of-type {
-  background-color: #e53935; /* Delete */
+  background-color: #e53935;
 }
 
 .card-actions button:last-of-type {
-  background-color: #43a047; /* Edit */
+  background-color: #43a047;
 }
 
 .card-actions button:hover {
   opacity: 0.9;
 }
 
-/* === Text Wrapping === */
-.card-text {
-  margin: 10px 0;
-  max-width: 90%;
-  word-break: break-word;
-  line-height: 1.4;
-}
-
-/* === Empty State === */
+/* Empty State */
 .no-flashcards {
   text-align: center;
   margin-top: 60px;
@@ -122,7 +116,7 @@
   opacity: 0.8;
 }
 
-/* === Heading === */
+/* Heading */
 h2 {
   text-align: center;
   margin: 40px 0 20px;
